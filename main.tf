@@ -9,7 +9,6 @@ terraform {
   }
 }
 
-
 resource "kubernetes_stateful_set" "test" {
   metadata {
     name = "test"
@@ -28,3 +27,21 @@ resource "kubernetes_stateful_set" "test" {
   }
 }
 
+
+resource "kubernetes_deployment" "test" {
+  metadata {
+    name = "test"
+  }
+
+  spec {
+
+    template {
+      spec {
+        container {
+          name = "example"
+          image = "nginx:1.7.8"
+        }
+      }
+    }
+  }
+}
